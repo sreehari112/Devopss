@@ -41,7 +41,7 @@
      command: /home/ubuntu/tomcat/apache-tomcat-8.5.38/bin/startup.sh
 
    - name: copy petclinic.war
-     shell: cp /home/ubuntu/petclinic.war /home/ubuntu/tomcat/apache-tomcat-8.5.38/webapps/
+     shell: cp target/petclinic.war /home/ubuntu/tomcat/apache-tomcat-8.5.38/webapps/
 
    - name: stop apache-tomcat-8.5.38
      command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.38/bin/shutdown.sh"
