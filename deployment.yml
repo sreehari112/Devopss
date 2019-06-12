@@ -2,10 +2,10 @@
 - hosts: prod
   tasks:
    - name: Updating the Server
-     shell: apt-get update 
+     shell: apt update 
      
    - name: Installing the Java
-     shell: apt-get install default-jdk -y
+     shell: apt install default-jdk -y
 
    - name: Create Folder
      file:
