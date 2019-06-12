@@ -1,5 +1,6 @@
 ---
 - hosts: prod
+  sudo: yes
   tasks:
    - name: Updating the Server
      shell: apt update 
