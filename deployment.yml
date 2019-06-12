@@ -1,24 +1,11 @@
 ---
 - hosts: prod
   tasks:
-   - name: Install add-apt-repostory
-     become: yes
-     apt: name=software-properties-common state=latest
-
-   - name: Add Oracle Java Repository
-     become: yes
-     apt_repository: repo='ppa:webupd8team/java'
-   - name: Accept Java 8 License
-     become: yes
-     debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
-
-   - name: Install Oracle Java 8
-     become: yes
-     apt: name={{item}} state=latest
-     with_items:
-       - oracle-java8-installer
-       - ca-certificates
-       - oracle-java8-set-default
+   - name: Updating the Server
+     shell: apt-get update 
+     
+   - name: Installing the Java
+     shell: apt-get install default-jdk -y
 
    - name: Create Folder
      file:
@@ -29,23 +16,26 @@
       group: ubuntu
 
    - name: Download Tomcat
-     get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz dest=/home/ubuntu/tomcat
+     get_url: url=https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz dest=/home/ubuntu/tomcat
 
    - name: Extract archive
-     unarchive: src=/home/ubuntu/tomcat/apache-tomcat-8.5.38.tar.gz dest=/home/ubuntu/tomcat remote_src=yes
+     unarchive: src=/home/ubuntu/tomcat/apache-tomcat-8.5.42.tar.gz dest=/home/ubuntu/tomcat remote_src=yes
   
 #   - name: Download Application
 #     get_url: url=https://s3.amazonaws.com/hariii/target/petclinic.war dest=/home/ubuntu/
 
    - name: start apache-tomcat-8.5.38
-     command: /home/ubuntu/tomcat/apache-tomcat-8.5.38/bin/startup.sh
+     command: /home/ubuntu/tomcat/apache-tomcat-8.5.42/bin/startup.sh
 
    - name: copy petclinic.war
-     shell: cp target/petclinic.war /home/ubuntu/tomcat/apache-tomcat-8.5.38/webapps/
-
+    # shell: cp target/petclinic.war /home/ubuntu/tomcat/apache-tomcat-8.5.38/webapps/
+     copy:
+        src: target/petclinic.war
+        dest: /home/ubuntu/tomcat/apache-tomcat-8.5.42/webapps
+        
    - name: stop apache-tomcat-8.5.38
-     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.38/bin/shutdown.sh"
+     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.42/bin/shutdown.sh"
    
    - name: start apache-tomcat-8.5.38
-     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.38/bin/startup.sh"
+     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.42/bin/startup.sh"
 
