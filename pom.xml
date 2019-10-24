@@ -17,17 +17,16 @@
   </dependencies>
   <build>
     <finalName>petclinic</finalName>
-  </build>
-   <distributionManagement>
-     <repository>
-       <id>hari</id>
-       <url>http://18.236.174.125:8081/repository/maven-releases/</url>
-     </repository>
-
+  </build><distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>ip-172-31-23-254-releases</name>
+        <url>http://54.188.98.5:8081/artifactory/jenkinss</url>
+    </repository>
     <snapshotRepository>
-      <id>hari</id>
-      <url>http://18.236.174.125:8081/repository/maven-snapshots/</url>
+        <id>snapshots</id>
+        <name>ip-172-31-23-254-snapshots</name>
+        <url>http://54.188.98.5:8081/artifactory/jenkinss</url>
     </snapshotRepository>
-
-   </distributionManagement>
+</distributionManagement>
 </project>
