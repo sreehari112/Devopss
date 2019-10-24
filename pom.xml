@@ -18,4 +18,16 @@
   <build>
     <finalName>petclinic</finalName>
   </build>
+   <distributionManagement>
+     <repository>
+       <id>hari</id>
+       <url>http://18.236.174.125:8081/repository/maven-releases/</url>
+     </repository>
+
+    <snapshotRepository>
+      <id>hari</id>
+      <url>http://18.236.174.125:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+
+   </distributionManagement>
 </project>
