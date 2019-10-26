@@ -17,7 +17,8 @@
   </dependencies>
   <build>
     <finalName>petclinic</finalName>
-  </build><distributionManagement>
+  </build>
+  <distributionManagement>
     <repository>
         <id>central</id>
         <name>ip-172-31-23-254-releases</name>
