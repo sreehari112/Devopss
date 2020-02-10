@@ -2,9 +2,9 @@
 - hosts: prod
   tasks:
    - name: Updating the Server
-     shell: apt update      
+     shell: sudo apt update      
    - name: Installing the Java
-     shell: apt install default-jdk -y
+     shell: sudo apt install default-jdk -y
    - name: Create Folder
      file:
       path: /home/ubuntu/tomcat
