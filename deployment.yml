@@ -1,5 +1,6 @@
 ---
 - hosts: prod
+  become: true
   tasks:
    - name: Updating the Server
      shell: sudo apt update      
