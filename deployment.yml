@@ -3,9 +3,9 @@
   become: yes
   tasks:
    - name: Updating the Server
-     shell: sudo apt update      
+     shell: apt update      
    - name: Installing the Java
-     shell: sudo apt install default-jdk -y
+     shell: apt install default-jdk -y
    - name: Create Folder
      file:
       path: /home/ubuntu/tomcat
