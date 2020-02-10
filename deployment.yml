@@ -1,13 +1,10 @@
 ---
 - hosts: prod
-  become: yes
   tasks:
    - name: Updating the Server
-     shell: apt update 
-     
+     shell: apt update      
    - name: Installing the Java
      shell: apt install default-jdk -y
-
    - name: Create Folder
      file:
       path: /home/ubuntu/tomcat
@@ -15,28 +12,20 @@
       mode: 0755
       owner: ubuntu
       group: ubuntu
-
    - name: Download Tomcat
      get_url: url=https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz dest=/home/ubuntu/tomcat
-
    - name: Extract archive
      unarchive: src=/home/ubuntu/tomcat/apache-tomcat-8.5.42.tar.gz dest=/home/ubuntu/tomcat remote_src=yes
-  
 #   - name: Download Application
 #     get_url: url=https://s3.amazonaws.com/hariii/target/petclinic.war dest=/home/ubuntu/
-
    - name: start apache-tomcat-8.5.38
      command: /home/ubuntu/tomcat/apache-tomcat-8.5.42/bin/startup.sh
-
    - name: copy petclinic.war
     # shell: cp target/petclinic.war /home/ubuntu/tomcat/apache-tomcat-8.5.38/webapps/
      copy:
         src: target/petclinic.war
-        dest: /home/ubuntu/tomcat/apache-tomcat-8.5.42/webapps
-        
+        dest: /home/ubuntu/tomcat/apache-tomcat-8.5.42/webapps       
    - name: stop apache-tomcat-8.5.38
      command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.42/bin/shutdown.sh"
-   
    - name: start apache-tomcat-8.5.38
      command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.42/bin/startup.sh"
-
