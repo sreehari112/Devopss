@@ -14,19 +14,19 @@
       owner: ubuntu
       group: ubuntu
    - name: Download Tomcat
-     get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.50/bin/apache-tomcat-8.5.50.tar.gz dest=/home/ubuntu/tomcat
+     get_url: url=https://downloads.apache.org/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.55.tar.gz dest=/home/ubuntu/tomcat
    - name: Extract archive
-     unarchive: src=/home/ubuntu/tomcat/apache-tomcat-8.5.50.tar.gz dest=/home/ubuntu/tomcat remote_src=yes
+     unarchive: src=/home/ubuntu/tomcat/apache-tomcat-8.5.55.tar.gz dest=/home/ubuntu/tomcat remote_src=yes
 #   - name: Download Application
 #     get_url: url=https://s3.amazonaws.com/hariii/target/petclinic.war dest=/home/ubuntu/
-   - name: start apache-tomcat-8.5.38
-     command: /home/ubuntu/tomcat/apache-tomcat-8.5.50/bin/startup.sh
+   - name: start apache-tomcat-8.5.55
+     command: /home/ubuntu/tomcat/apache-tomcat-8.5.55/bin/startup.sh
    - name: copy petclinic.war
     # shell: cp target/petclinic.war /home/ubuntu/tomcat/apache-tomcat-8.5.38/webapps/
      copy:
         src: target/petclinic.war
-        dest: /home/ubuntu/tomcat/apache-tomcat-8.5.50/webapps       
-   - name: stop apache-tomcat-8.5.38
-     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.50/bin/shutdown.sh"
-   - name: start apache-tomcat-8.5.38
-     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.50/bin/startup.sh"
+        dest: /home/ubuntu/tomcat/apache-tomcat-8.5.55/webapps       
+   - name: stop apache-tomcat-8.5.55
+     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.55/bin/shutdown.sh"
+   - name: start apache-tomcat-8.5.55
+     command: nohup "/home/ubuntu/tomcat/apache-tomcat-8.5.55/bin/startup.sh"
