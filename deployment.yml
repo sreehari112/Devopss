@@ -17,9 +17,9 @@
      get_url: url=https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.75/bin/apache-tomcat-8.5.75.tar.gz dest=/home/ubuntu/tomcat
    - name: Extract archive
      unarchive: src=/home/ubuntu/tomcat/apache-tomcat-8.5.75.tar.gz dest=/home/ubuntu/tomcat remote_src=yes
-#   - name: Download Application
+#   - name: Download ApplicationNNNN
 #     get_url: url=https://s3.amazonaws.com/hariii/target/petclinic.war dest=/home/ubuntu/
-   - name: start apache-tomcat-8.5.75
+   - name: start apache-tomcat-8.5.75 tomcat
      command: /home/ubuntu/tomcat/apache-tomcat-8.5.75/bin/startup.sh
    - name: copy petclinic.war
     # shell: cp target/petclinic.war /home/ubuntu/tomcat/apache-tomcat-8.5.38/webapps/
